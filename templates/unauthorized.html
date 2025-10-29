@@ -1,0 +1,17 @@
+<html>
+<head>
+    
+</head>
+
+<body>
+    <br>
+    <br>
+    <br>
+    <br>
+    <center><h1>You don't have permission to perform this action</h1></center>
+    {%if AttemptedQuery %}
+    <h4 style="color: red"> The attempted query was: {{ AttemptedQuery }}</h4>
+    {% endif %}
+    <a href=" {{url_for('index')}}">Back</a>
+</body>
+</html>

@@ -1,0 +1,88 @@
+<html>
+<head>
+    
+</head>
+
+<body>
+    <center><h1>NO SQL Injection Example</h1></center><br>
+    <br>
+    <center>
+        <h3>Try this NoSQL Injection Payload:</h3>
+        <pre>{"$ne": "nonexistentfirstname"}</pre>
+    </center>
+
+    <form method="POST">
+        <center><input type="text" name="search" placeholder="search"; required></center>
+        <center><button type="submit">Search</button></center>
+    </form>
+    <div class = "center-text">
+        {% if employees %}
+        <center><table border = "2"></center>
+            <tr>
+                <th>EmployeeID</th>
+                <th>SSN</th>
+                <th>FirstName</th>
+                <th>LastName</th>
+                <th>Email</th>
+                <th>Password</th>
+                <th>Phone</th>
+                <th>DateOfBirth</th>
+                <th>HireDate</th>
+                <th>TerminationDate</th>
+                <th>EmployementType</th>
+                <th>PositionID</th>
+                <th>PositionTitle</th>
+                <th>Salary</th>
+            </tr>
+            {% for row in employees %}
+            <tr>
+                <td>{{row.EmployeeID}}</td>
+                <td>{{row.SSN}}</td>
+                <td>{{row.FirstName}}</td>
+                <td>{{row.LastName}}</td>
+                <td>{{row.Email}}</td>
+                <td>{{row.Password}}</td>
+                <td>{{row.Phone}}</td>
+                <td>{{row.DateOfBirth}}</td>
+                <td>{{row.HireDate}}</td>
+                <td>{{row.TerminationDate}}</td>
+                <td>{{row.EmployementType}}</td>
+                <td>{{row.PositionID}}</td>
+                <td>{{row.PositionTitle}}</td>
+                <td>{{row.Salary}}</td>
+            </tr>
+            {% endfor %}
+        </table><br>
+        {% endif %}
+
+        {% if benefits %}
+        <center><h3>Benefits are </h3></center>
+        <center><table border="2">
+            <tr>
+                <th>BenefitID</th>
+                <th>Name</th>
+                <th>EnrollmentDate</th>
+                <th>Waived</th>
+            </tr>
+            {% for row in benefits %}
+            <tr>
+                <td>{{ row.BenefitID }}</td>
+                <td>{{ row.Name }}</td>
+                <td>{{ row.EnrollmentDate}}</td>
+                <td>{{ row.Waived}}</td>
+            </tr>
+            {% endfor %}
+        </table></center><br>
+        {% endif %}
+
+    </div>
+    {%if UnalteredQuery %}
+    <h4 style="color: red"> The previous query was: {{ UnalteredQuery }}</h4>
+    {% endif %}
+    {%if CurrentCommand %}
+    <h4 style="color: green">The query that was executed was: {{CurrentCommand}}</h4>
+    {% endif %}
+    <a href=" {{url_for('index')}}">Back</a>
+</body>
+
+</html>

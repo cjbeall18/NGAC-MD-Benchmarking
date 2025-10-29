@@ -1,0 +1,75 @@
+<html>
+<head>
+    
+</head>
+
+<body>
+    <center><h1>View Customers</h1></center><br>
+    <br>
+    <form method="POST">
+        <center><input type="text" name="search" placeholder="search" required></center>
+        <center><button type="submit">Search</button></center>
+    </form>
+    <div class = "center-text">
+        {% if customers %}
+        <center><table border = "2"></center>
+            <tr>
+                <th>CustomerID</th>
+                <th>CreditCardNumber</th>
+                <th>CustomerType</th>
+                <th>FirstName</th>
+                <th>LastName</th>
+                <th>CompanyName</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>TaxID</th>
+                <th>Status</th>
+            </tr>
+            {% for row in customers %}
+            <tr>
+                <td>{{row.CustomerID}}</td>
+                <td>{{row.CreditCardNumber}}</td>
+                <td>{{row.CustomerType}}</td>
+                <td>{{row.FirstName}}</td>
+                <td>{{row.LastName}}</td>
+                <td>{{row.CompanyName}}</td>
+                <td>{{row.Email}}</td>
+                <td>{{row.Phone}}</td>
+                <td>{{row.TaxID}}</td>
+                <td>{{row.Status}}</td>
+            </tr>
+            {% endfor %}
+        </table><br>
+        {% endif %}
+
+        {% if addresses %}
+        <center><h3>Address is </h3></center>
+        <center><table border="2">
+            <tr>
+                <th>Street</th>
+                <th>City</th>
+                <th>State</th>
+                <th>ZipCode</th>
+            </tr>
+            {% for row in addresses %}
+            <tr>
+                <td>{{ row.Street }}</td>
+                <td>{{ row.City }}</td>
+                <td>{{ row.State}}</td>
+                <td>{{ row.ZipCode}}</td>
+            </tr>
+            {% endfor %}
+        </table></center><br>
+        {% endif %}
+
+    </div>
+    {%if UnalteredQuery %}
+    <h4 style="color: red"> The previous query was: {{ UnalteredQuery }}</h4>
+    {% endif %}
+    {%if CurrentCommand %}
+    <h4 style="color: green">The query that was executed was: {{CurrentCommand}}</h4>
+    {% endif %}
+    <a href=" {{url_for('index')}}">Back</a>
+</body>
+
+</html>

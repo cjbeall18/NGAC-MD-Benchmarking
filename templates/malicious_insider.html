@@ -1,0 +1,31 @@
+<html>
+<head>
+    
+</head>
+
+<body>
+    <center><h1>Update Employee Salary</h1></center><br>
+    <br>
+    <form method="POST">
+        <select name = "SelectedID" id="SelectedID">
+            <option value="" disabled selected>Please select an Employee record</option>
+            {% for record in allEmployees %}
+            <option value="{{ record.EmployeeID}}">
+                (EmployeeID: {{ record.EmployeeID }}, Salary: {{ record.Salary }})
+            </option>
+            {% endfor %}
+        </select>
+        <center><input type="number" name="Salary" placeholder="Enter New Salary" required></center>
+        <center><button type="submit">Submit</button></center>
+    </form>
+
+    {%if UnalteredQuery %}
+    <h4 style="color: red"> The previous query was: {{ UnalteredQuery }}</h4>
+    {% endif %}
+    {%if CurrentCommand %}
+    <h4 style="color: green">The query that was executed was: {{CurrentCommand}}</h4>
+    {% endif %}
+    <a href=" {{url_for('index')}}">Back</a>
+</body>
+
+</html>
